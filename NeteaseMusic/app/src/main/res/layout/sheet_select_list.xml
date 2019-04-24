@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#0ff"
+    android:background="@drawable/bg_sheet_cornor_14"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -14,7 +14,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@drawable/bg_sheet_cornor_10"
             android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
@@ -26,14 +25,13 @@
 
         <ImageView
             android:id="@+id/sheet_title_iv_right"
-            android:layout_width="20dp"
+            android:layout_width="46dp"
             android:layout_height="0dp"
-            android:background="@drawable/bg_sheet_cornor_10"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:src="@drawable/ic_delete_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/sheet_title_tv_right"
