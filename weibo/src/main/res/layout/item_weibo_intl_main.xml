@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_weibo_intl_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/item_weibo_intl_avatar"
+        android:layout_width="@dimen/weibo_intl_avatar_main"
+        android:layout_height="@dimen/weibo_intl_avatar_main"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_weibo_intl_avatar"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"/>
+
+    <TextView
+        android:id="@+id/item_weibo_intl_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/item_weibo_intl_avatar"
+        tools:text="今天微博倒闭了吗"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        app:layout_constraintTop_toTopOf="@id/item_weibo_intl_avatar"/>
+    
+    <TextView
+        android:id="@+id/item_weibo_intl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#777"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/item_weibo_intl_name"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_name"
+        tools:text="15 min ago"/>
+
+    <TextView
+        android:id="@+id/item_weibo_intl_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintLeft_toRightOf="@id/item_weibo_intl_time"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_name"
+        android:textColor="#777"
+        tools:text="Android"/>
+
+    <TextView
+        android:id="@+id/item_weibo_intl_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_avatar"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        tools:text="微博 文本内容//@来去之间：什么鬼"
+        android:textColor="#333"/>
+
+    <TextView
+        android:id="@+id/item_weibo_intl_translate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See Translation"
+        app:layout_constraintLeft_toLeftOf="@id/item_weibo_intl_text"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_text"
+        android:layout_marginTop="4dp"/>
+
+
+    <!--Content 部分需要再考虑一下-->
+    <FrameLayout
+        android:id="@+id/item_weibo_intl_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_translate"
+        android:layout_marginTop="4dp"
+        android:background="#eee">
+
+        <TextView
+            android:id="@+id/test_tv_content_type"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="center"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_share" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_comment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_like" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_send" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
