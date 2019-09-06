@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/item_weibo_intl_avatar"
-        android:layout_width="@dimen/weibo_intl_avatar_main"
-        android:layout_height="@dimen/weibo_intl_avatar_main"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="12dp"
@@ -81,8 +81,6 @@
         app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_text"
         android:layout_marginTop="4dp"/>
 
-
-    <!--Content 部分需要再考虑一下-->
     <FrameLayout
         android:id="@+id/item_weibo_intl_content"
         android:layout_width="0dp"
@@ -90,17 +88,72 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_translate"
-        android:layout_marginTop="4dp"
-        android:background="#eee">
+        android:layout_marginTop="4dp">
 
-        <TextView
-            android:id="@+id/test_tv_content_type"
+        <!--fixme：Content内容差别如何处理比较好？-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/item_weibo_intl_pic_grid"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            tools:background="#ff0"
+            android:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_weibo_intl_retweeted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="#eee"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/item_weibo_intl_retweeted_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="\@扶她柠檬茶:今天保证没有糖"
+                android:textColor="#333"/>
+
+            <TextView
+                android:id="@+id/item_weibo_intl_retweeted_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="@id/item_weibo_intl_retweeted_text"
+                app:layout_constraintRight_toRightOf="@id/item_weibo_intl_retweeted_text"
+                app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_retweeted_text"
+                tools:text="Reposts 3K  Comments 100  Likes 100K"
+                android:textSize="12sp"
+                android:textColor="#999"/>
+
+            <FrameLayout
+                android:id="@+id/item_weibo_intl_retweeted_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_retweeted_info">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/item_weibo_intl_retweeted_pics_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/item_weibo_intl_bottombar"
         android:layout_width="0dp"
         android:layout_height="52dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -152,5 +205,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:background="#e7e7e7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toTopOf="@id/item_weibo_intl_bottombar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

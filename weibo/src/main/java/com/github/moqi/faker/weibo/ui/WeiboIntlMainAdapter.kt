@@ -4,6 +4,8 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,6 +13,8 @@ import com.github.moqi.faker.R
 import com.github.moqi.faker.weibo.beans.WeiboStatus
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
 import com.github.moqi.faker.weibo.datasource.tools.getWeiboType
+import com.github.moqi.faker.weibo.ui.tools.DividerDecoration
+import com.github.moqi.faker.weibo.ui.tools.ScreenInfo
 import kotlinx.android.synthetic.main.item_weibo_intl_main.view.*
 
 /**
@@ -66,12 +70,33 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
             when(bean.getWeiboType()){
                 WeiboDataSource.WeiboContentType.TEXT -> {
                     itemView.item_weibo_intl_content.visibility = View.GONE
+                    itemView.item_weibo_intl_pic_grid.visibility =  View.GONE
+                    itemView.item_weibo_intl_retweeted.visibility =  View.GONE
                 }
                 WeiboDataSource.WeiboContentType.IMAGE -> {
-                    itemView.test_tv_content_type.text = bean.pic_urls.toString()
+                    itemView.item_weibo_intl_content.visibility = View.VISIBLE
+                    itemView.item_weibo_intl_pic_grid.visibility =  View.VISIBLE
+                    itemView.item_weibo_intl_retweeted.visibility =  View.GONE
+                    val pics = ArrayList<String>()
+                    bean.pic_urls.forEach {
+                        pics.add(it.thumbnail_pic)
+                    }
+                    itemView.item_weibo_intl_pic_grid.apply {
+                        val span = if(pics.size<4){2}else{3}
+                        layoutManager = GridLayoutManager(itemView.context, span, RecyclerView.VERTICAL, false)
+                        adapter = WeiboIntlPicsAdapter(pics, ScreenInfo.WIDTH - 2*10 -12*(span-1))
+                        addItemDecoration(DividerDecoration(6, 6, 6, 6))
+                    }
                 }
                 WeiboDataSource.WeiboContentType.WEIBO -> {
-                    itemView.test_tv_content_type.text = bean.retweeted_status.text
+                    itemView.item_weibo_intl_content.visibility = View.VISIBLE
+                    itemView.item_weibo_intl_pic_grid.visibility =  View.GONE
+                    itemView.item_weibo_intl_retweeted.visibility =  View.VISIBLE
+
+                    val text = Html.fromHtml("<a href=\"https://www.baidu.com\">@${bean.retweeted_status.user.screen_name}</a>:${bean.retweeted_status.text}")
+                    itemView.item_weibo_intl_retweeted_text.text = text
+                    itemView.item_weibo_intl_retweeted_info.text = "Reposts ${bean.retweeted_status.reposts_count} Comments ${bean.retweeted_status.comments_count} Likes ${bean.retweeted_status.attitudes_count}"
+                    // content 待补充
                 }
             }
 

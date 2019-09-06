@@ -1,6 +1,7 @@
 package com.github.moqi.faker
 
 import android.content.Intent
+import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.github.moqi.faker.plugins.loge
@@ -9,6 +10,7 @@ import com.github.moqi.faker.plugins.spWrite
 import com.github.moqi.faker.plugins.toast
 import com.github.moqi.faker.weibo.ui.WeiboIntlMainAct
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
+import com.github.moqi.faker.weibo.ui.tools.ScreenInfo
 import com.sina.weibo.sdk.auth.Oauth2AccessToken
 import com.sina.weibo.sdk.auth.WbAuthListener
 import com.sina.weibo.sdk.auth.WbConnectErrorMessage
@@ -22,6 +24,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        windowManager?.let {
+            val size = Point()
+            it.defaultDisplay.getSize(size)
+            ScreenInfo.WIDTH = size.x
+            ScreenInfo.HEIGHT = size.y
+
+            loge("screen info: w=${ScreenInfo.WIDTH}, h=${ScreenInfo.HEIGHT}")
+        }
 
         weibo = WeiboDataSource(this)
 
