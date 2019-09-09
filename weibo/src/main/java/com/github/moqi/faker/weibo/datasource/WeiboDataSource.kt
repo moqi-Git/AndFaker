@@ -14,9 +14,9 @@ import com.sina.weibo.sdk.auth.sso.SsoHandler
  */
 class WeiboDataSource(private val context: Context) {
 
-    private val APP_KEY = "4097729193"
-    private val APP_SECRET = "13bd6463de985843ddca0fdef3f35ebb"
-    private val REDIRECT_URL = "https://api.weibo.com/oauth2/default.html"
+    private val APP_KEY = "4015293047"
+    private val APP_SECRET = "6f6fc4049f5180c56a3bc6b7380dbfdc"
+    private val REDIRECT_URL = "https://github.com/moqi-Git"
     private val SCOPE = ("email,direct_messages_read,direct_messages_write,"
             + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
             + "follow_app_official_microblog," + "invitation_write")

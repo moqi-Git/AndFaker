@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whitesmoke"
+    tools:context=".weibo.ui.WeiboDetailAct">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/weibo_detail_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <include layout="@layout/item_weibo_intl_main" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#f00"
+        android:layout_marginTop="18dp"/>
+
+<!--下面是需要切换的页面，考虑Fragment或者多个View，View比较好吧-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by hot degree"
+        android:textColor="#06f"
+        android:layout_gravity="end"
+        android:layout_marginRight="12dp"/>
+
+
+</LinearLayout>
