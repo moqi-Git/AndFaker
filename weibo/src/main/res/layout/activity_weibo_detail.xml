@@ -31,13 +31,18 @@
 
 <!--下面是需要切换的页面，考虑Fragment或者多个View，View比较好吧-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sort by hot degree"
-        android:textColor="#06f"
-        android:layout_gravity="end"
-        android:layout_marginRight="12dp"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sort by hot degree"-->
+<!--        android:textColor="#06f"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginRight="12dp"/>-->
+
+    <FrameLayout
+        android:id="@+id/weibo_detail_act_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

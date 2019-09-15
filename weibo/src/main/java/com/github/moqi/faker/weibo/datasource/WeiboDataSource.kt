@@ -41,6 +41,7 @@ class WeiboDataSource(private val context: Context) {
 
     companion object{
         @JvmStatic val URL_TIMELINE = "https://api.weibo.com/2/statuses/home_timeline.json"
+        @JvmStatic val URL_GET_COMMENTS = "https://api.weibo.com/2/comments/show.json"
     }
 
     enum class WeiboContentType{

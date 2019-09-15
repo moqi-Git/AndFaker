@@ -49,6 +49,8 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'com.android.support:design:28.0.0'
 
     //base function support
     implementation 'com.squareup.okhttp3:okhttp:4.1.0'
@@ -62,6 +64,8 @@ dependencies {
 
     //weibo sdk
     implementation(name: 'openDefault-4.4.1', ext: 'aar')
+
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

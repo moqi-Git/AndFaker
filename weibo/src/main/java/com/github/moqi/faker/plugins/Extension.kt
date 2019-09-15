@@ -2,8 +2,16 @@ package com.github.moqi.faker.plugins
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.Toast
-import kotlin.math.max
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import java.lang.Exception
+import java.lang.IllegalStateException
 
 /**
  *
@@ -44,4 +52,30 @@ fun xlog(text: String){
             break
         }
     }
+}
+
+fun ViewPager.setupWithFragments(fragmentManager: FragmentManager, fragments: ArrayList<Fragment>){
+    val adapter = object : FragmentPagerAdapter(fragmentManager) {
+        override fun getItem(position: Int): Fragment = fragments[position]
+        override fun getCount(): Int = fragments.size
+    }
+    this.adapter = adapter
+}
+
+fun FragmentActivity.replaceFragment(containerId: Int, fragment: Fragment){
+    val trans = supportFragmentManager.beginTransaction()
+    trans.replace(containerId, fragment)
+    trans.commit()
+}
+
+fun FragmentActivity.hideChangeFragment(hideOne: Fragment, showOne: Fragment){
+    val trans = supportFragmentManager.beginTransaction()
+    trans.hide(hideOne)
+    if (showOne.isAdded){
+        trans.show(showOne)
+    } else {
+        throw IllegalStateException("You must add the showOne before change to it")
+    }
+
+    trans.commit()
 }

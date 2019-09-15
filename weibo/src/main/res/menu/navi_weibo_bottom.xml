@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_weibo_timeline"
+        android:icon="@drawable/ic_timeline"
+        android:title="时间线" />
+    <item
+        android:id="@+id/menu_weibo_message"
+        android:icon="@drawable/ic_message"
+        android:title="消息" />
+</menu>

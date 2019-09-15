@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.github.moqi.faker.R
 import com.github.moqi.faker.weibo.beans.WeiboStatus
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
+import com.github.moqi.faker.weibo.datasource.tools.formTimeString
 import com.github.moqi.faker.weibo.datasource.tools.getWeiboType
 import com.github.moqi.faker.weibo.ui.tools.DividerDecoration
 import com.github.moqi.faker.weibo.ui.tools.ScreenInfo
@@ -63,7 +64,7 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
 
         fun bindView(bean: WeiboStatus.Statuse) {
             itemView.item_weibo_intl_name.text = bean.user.screen_name
-            itemView.item_weibo_intl_time.text = bean.created_at
+            itemView.item_weibo_intl_time.text = formTimeString(bean.created_at)
             itemView.item_weibo_intl_device.text = Html.fromHtml(bean.source)
             itemView.item_weibo_intl_text.text = bean.text
 
