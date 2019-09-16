@@ -12,6 +12,7 @@ import com.github.moqi.faker.plugins.toast
 import com.github.moqi.faker.plugins.xlog
 import com.github.moqi.faker.weibo.beans.WeiboStatus
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
+import com.github.moqi.faker.weibo.ui.base.BaseFragment
 import com.github.moqi.faker.weibo.ui.tools.DividerDecoration
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_weibo_timeline.*

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.github.moqi.faker.R
-import com.github.moqi.faker.plugins.setupWithFragments
+import com.github.moqi.faker.weibo.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_weibo_message.*
 
 class MessageFragment: BaseFragment() {

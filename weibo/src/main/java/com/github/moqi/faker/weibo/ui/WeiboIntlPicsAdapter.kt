@@ -18,10 +18,12 @@ import com.github.moqi.faker.plugins.loge
  */
 class WeiboIntlPicsAdapter(private val picList: ArrayList<String>, private val totalWidth: Int): RecyclerView.Adapter<WeiboIntlPicsAdapter.WeiboIntlPicsHolder>() {
 
+    var clickEvent: ((View, Int) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeiboIntlPicsHolder {
         // 动态创建 ImageView 比较好吧
 
-        val span = if (picList.size < 4) {2} else {3}
+        val span = getSpan(picList.size)
         val imWidth = totalWidth / span
         val imageView = ImageView(parent.context)
 
@@ -41,6 +43,18 @@ class WeiboIntlPicsAdapter(private val picList: ArrayList<String>, private val t
         holder.bindView(picList[position])
     }
 
+    companion object{
+        @JvmStatic
+        fun getSpan(picNum: Int): Int{
+            return when{
+                picNum < 2 -> 1
+                picNum in 2..4 -> 2
+                picNum in 5..9 -> 3
+                else -> 3
+            }
+        }
+    }
+
 
     class WeiboIntlPicsHolder(itemView: ImageView): RecyclerView.ViewHolder(itemView){
         fun bindView(url: String){ // todo：区分 url 公共部分和图片 id
@@ -52,6 +66,12 @@ class WeiboIntlPicsAdapter(private val picList: ArrayList<String>, private val t
                 .load(url)
                 .apply(RequestOptions().placeholder(R.drawable.ic_share).error(R.drawable.ic_like).centerCrop())
                 .into(itemView as ImageView)
+        }
+
+        fun bindEvent(event: ((View, Int) -> Unit), position: Int){
+            itemView.setOnClickListener{
+                event(it, position)
+            }
         }
     }
 }

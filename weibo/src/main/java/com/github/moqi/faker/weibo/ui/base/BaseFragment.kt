@@ -1,4 +1,4 @@
-package com.github.moqi.faker.weibo.ui
+package com.github.moqi.faker.weibo.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
