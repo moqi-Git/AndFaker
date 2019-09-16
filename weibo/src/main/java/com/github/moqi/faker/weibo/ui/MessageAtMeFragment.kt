@@ -3,6 +3,7 @@ package com.github.moqi.faker.weibo.ui
 import android.os.Bundle
 import android.view.View
 import com.github.moqi.faker.R
+import com.github.moqi.faker.weibo.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_weibo_message_atme.*
 
 class MessageAtMeFragment : BaseFragment(){

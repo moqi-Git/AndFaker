@@ -88,11 +88,7 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
                         pics.add(it.thumbnail_pic)
                     }
                     itemView.item_weibo_intl_pic_grid.apply {
-                        val span = if (pics.size < 4) {
-                            2
-                        } else {
-                            3
-                        }
+                        val span = WeiboIntlPicsAdapter.getSpan(pics.size)
                         layoutManager =
                             GridLayoutManager(itemView.context, span, RecyclerView.VERTICAL, false)
                         adapter =
