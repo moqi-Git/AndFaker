@@ -6,6 +6,7 @@ import android.text.Html
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.moqi.faker.R
+import com.github.moqi.faker.plugins.replaceFragment
 import com.github.moqi.faker.plugins.toast
 import com.github.moqi.faker.weibo.datasource.tools.formTimeString
 import kotlinx.android.synthetic.main.activity_weibo_detail.*
@@ -40,5 +41,8 @@ class WeiboDetailAct : AppCompatActivity() {
             .into(item_weibo_intl_avatar)
 
         // 考虑到数据的量，更多数据
+
+        val commentFragment = CommentListFragment() // fixme:暂时测试用
+        replaceFragment(R.id.weibo_detail_act_container, commentFragment)
     }
 }

@@ -106,6 +106,7 @@ class TimelineFragment: BaseFragment() {
             putExtra("time", bean.created_at)
             putExtra("device", bean.source)
             putExtra("text", bean.text)
+            putExtra("id", bean.id)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
