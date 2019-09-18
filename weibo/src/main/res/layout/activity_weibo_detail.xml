@@ -10,7 +10,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/weibo_detail_toolbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
@@ -23,21 +23,55 @@
 
     <include layout="@layout/item_weibo_intl_main" />
 
-    <View
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="#f00"
-        android:layout_marginTop="18dp"/>
+        android:layout_marginTop="12dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/weibo_detail_tab_like"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            tools:text="Likes 43"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/weibo_detail_tab_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            tools:text="Comments 102"
+            app:layout_constraintLeft_toRightOf="@id/weibo_detail_tab_like"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/weibo_detail_tab_repost"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            tools:text="Reposts 21"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--下面是需要切换的页面，考虑Fragment或者多个View，View比较好吧-->
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Sort by hot degree"-->
-<!--        android:textColor="#06f"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_marginRight="12dp"/>-->
 
     <FrameLayout
         android:id="@+id/weibo_detail_act_container"

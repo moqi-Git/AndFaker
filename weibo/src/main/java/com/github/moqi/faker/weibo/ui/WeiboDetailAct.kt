@@ -3,6 +3,7 @@ package com.github.moqi.faker.weibo.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.moqi.faker.R
@@ -20,6 +21,7 @@ class WeiboDetailAct : AppCompatActivity() {
         setContentView(R.layout.activity_weibo_detail)
 
         setSupportActionBar(weibo_detail_toolbar)
+        setupTitle()
 
         initData()
     }
@@ -44,5 +46,23 @@ class WeiboDetailAct : AppCompatActivity() {
 
         val commentFragment = CommentListFragment() // fixme:暂时测试用
         replaceFragment(R.id.weibo_detail_act_container, commentFragment)
+    }
+
+    private fun setupTitle(){
+        val actionBar = supportActionBar?:return
+        actionBar.apply {
+            title = "微博详情"
+            setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
