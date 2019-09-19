@@ -12,6 +12,8 @@ import com.github.moqi.faker.plugins.xlog
 import com.github.moqi.faker.weibo.beans.WeiboCommentBean
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
 import com.github.moqi.faker.weibo.ui.base.BaseFragment
+import com.github.moqi.faker.weibo.ui.tools.ScreenHeightLayoutManager
+import com.github.moqi.faker.weibo.ui.tools.ScreenInfo
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_comment_list.*
 
@@ -36,7 +38,14 @@ class CommentListFragment : BaseFragment() {
 
     private fun initView() {
 
+        val p = weibo_comments_rv.layoutParams
+        loge("height=${ScreenInfo.HEIGHT}")
+        p.height = ScreenInfo.HEIGHT
+        weibo_comments_rv.layoutParams = p
+
         weibo_comments_rv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+//        weibo_comments_rv.layoutManager = ScreenHeightLayoutManager(context!!, ScreenInfo.HEIGHT-150)
         weibo_comments_rv.adapter = commentAdapter
         refreshComments(page)
 

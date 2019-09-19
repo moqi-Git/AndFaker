@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.moqi.faker.R
+import com.github.moqi.faker.plugins.loge
 import com.github.moqi.faker.weibo.beans.WeiboCommentBean
 import com.github.moqi.faker.weibo.datasource.tools.formTimeString
 import kotlinx.android.synthetic.main.item_weibo_comment.view.*
@@ -16,8 +17,11 @@ import kotlinx.android.synthetic.main.item_weibo_comment.view.*
  * created by reol at 2019-09-18
  */
 class CommentListAdapter(private val mCommentList: ArrayList<WeiboCommentBean.CommentContent>): RecyclerView.Adapter<CommentListAdapter.CommentListHolder>() {
+    private var itemCount = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentListHolder {
+        itemCount++
+        loge("comment view=$itemCount")
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weibo_comment, parent, false)
         return CommentListHolder(view)
     }

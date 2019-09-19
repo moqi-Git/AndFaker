@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.moqi.faker.R
+import com.github.moqi.faker.plugins.loge
 import com.github.moqi.faker.weibo.beans.WeiboStatus
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
 import com.github.moqi.faker.weibo.datasource.tools.formTimeString
@@ -25,6 +26,8 @@ import kotlinx.android.synthetic.main.item_weibo_intl_main.view.*
 class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>) :
     RecyclerView.Adapter<WeiboIntlMainAdapter.WeiboIntlMainHolder>() {
 
+    private var itemCount = 0
+
     var cardClickEvent: ((View, Int) -> Unit)? = null
     private var contentClickEvent: ((View, Int) -> Unit)? = null
     private var commentClickEvent: ((View, Int) -> Unit)? = null
@@ -33,6 +36,8 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeiboIntlMainHolder {
 //        if (viewType == 0){
+        itemCount++
+        loge("comment view=$itemCount")
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_weibo_intl_main, parent, false)
         return WeiboIntlMainHolder(view)
