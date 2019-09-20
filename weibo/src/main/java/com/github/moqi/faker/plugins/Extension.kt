@@ -26,6 +26,10 @@ fun loge(text: String){
     Log.e("asdfg", text)
 }
 
+fun loges(text: String, specialTag: String = "=OxO="){
+    Log.e(specialTag, text)
+}
+
 fun Context.spWrite(key: String, value: String, file: String = "MAKI_KEY"){
     val sp = getSharedPreferences(file, 0)
     sp.edit().putString(key, value).apply()
@@ -52,6 +56,16 @@ fun xlog(text: String){
             break
         }
     }
+}
+
+fun Context.pxcdp(dpValue: Float): Int{
+    val scale = applicationContext.resources.displayMetrics.density
+    return (dpValue * scale + 0.5f).toInt()
+}
+
+fun Context.dpcpx(pxValue: Int): Float{
+    val scale = applicationContext.resources.displayMetrics.density
+    return pxValue.toFloat() / scale + 0.5f
 }
 
 fun ViewPager.setupWithFragments(fragmentManager: FragmentManager, fragments: ArrayList<Fragment>){

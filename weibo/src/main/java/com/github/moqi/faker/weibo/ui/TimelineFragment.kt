@@ -107,6 +107,10 @@ class TimelineFragment: BaseFragment() {
             putExtra("device", bean.source)
             putExtra("text", bean.text)
             putExtra("id", bean.id)
+
+            putExtra("reposts", bean.reposts_count)
+            putExtra("comments", bean.comments_count)
+            putExtra("likes", bean.attitudes_count)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

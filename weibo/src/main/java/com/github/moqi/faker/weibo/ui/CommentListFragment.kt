@@ -1,5 +1,6 @@
 package com.github.moqi.faker.weibo.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import com.github.moqi.faker.plugins.xlog
 import com.github.moqi.faker.weibo.beans.WeiboCommentBean
 import com.github.moqi.faker.weibo.datasource.WeiboDataSource
 import com.github.moqi.faker.weibo.ui.base.BaseFragment
+import com.github.moqi.faker.weibo.ui.tools.DividerDecoration
 import com.github.moqi.faker.weibo.ui.tools.ScreenHeightLayoutManager
 import com.github.moqi.faker.weibo.ui.tools.ScreenInfo
 import com.google.gson.Gson
@@ -37,18 +39,23 @@ class CommentListFragment : BaseFragment() {
     }
 
     private fun initView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            weibo_comments_ll_root.isNestedScrollingEnabled = true
+        }
+
+        val cardHeight = arguments?.getInt("cardHeight")?:0
+        val pageHeight = arguments?.getInt("pageHeight")?:0
+        loge("ch=$cardHeight, ph=$pageHeight")
 
         val p = weibo_comments_rv.layoutParams
-        loge("height=${ScreenInfo.HEIGHT}")
+        loge("height=${pageHeight}")
         p.height = ScreenInfo.HEIGHT
         weibo_comments_rv.layoutParams = p
 
         weibo_comments_rv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-
-//        weibo_comments_rv.layoutManager = ScreenHeightLayoutManager(context!!, ScreenInfo.HEIGHT-150)
+        weibo_comments_rv.addItemDecoration(DividerDecoration(0,1,0,0))
         weibo_comments_rv.adapter = commentAdapter
         refreshComments(page)
-
     }
 
     private fun refreshComments(page: Int) {

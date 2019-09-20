@@ -8,7 +8,8 @@
     android:paddingLeft="10dp"
     android:paddingTop="8dp"
     android:paddingRight="10dp"
-    android:paddingBottom="8dp">
+    android:paddingBottom="8dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/item_weibo_comments_avatar"
