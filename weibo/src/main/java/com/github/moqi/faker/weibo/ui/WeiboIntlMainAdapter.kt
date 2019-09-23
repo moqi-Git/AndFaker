@@ -29,6 +29,7 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
     private var itemCount = 0
 
     var cardClickEvent: ((View, Int) -> Unit)? = null
+    var avatarClickEvent: ((View, Int) -> Unit)? = null
     private var contentClickEvent: ((View, Int) -> Unit)? = null
     private var commentClickEvent: ((View, Int) -> Unit)? = null
     private var forwardClickEvent: ((View, Int) -> Unit)? = null
@@ -62,6 +63,10 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
         cardClickEvent?.let {
             holder.bindEvent(it, position)
         }
+
+        avatarClickEvent?.let {
+            holder.bindAvatarEvent(it, position)
+        }
     }
 
 
@@ -71,7 +76,10 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
             itemView.item_weibo_intl_name.text = bean.user.screen_name
             itemView.item_weibo_intl_time.text = formTimeString(bean.created_at)
             itemView.item_weibo_intl_device.text = Html.fromHtml(bean.source)
-            itemView.item_weibo_intl_text.text = bean.text
+
+            itemView.item_weibo_intl_bottom_tab_tv_reposts.text = bean.reposts_count.toString()
+            itemView.item_weibo_intl_bottom_tab_tv_comments.text = bean.comments_count.toString()
+            itemView.item_weibo_intl_bottom_tab_tv_likes.text = bean.attitudes_count.toString()
 
             Glide.with(itemView.context)
                 .load(bean.user.avatar_large)
@@ -83,8 +91,19 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
                     itemView.item_weibo_intl_content.visibility = View.GONE
                     itemView.item_weibo_intl_pic_grid.visibility = View.GONE
                     itemView.item_weibo_intl_retweeted.visibility = View.GONE
+
+                    itemView.item_weibo_intl_text.text = bean.text
+                }
+                WeiboDataSource.WeiboContentType.LINK -> {
+                    itemView.item_weibo_intl_content.visibility = View.GONE
+                    itemView.item_weibo_intl_pic_grid.visibility = View.GONE
+                    itemView.item_weibo_intl_retweeted.visibility = View.GONE
+
+                    itemView.item_weibo_intl_text.text = Html.fromHtml(bean.text)
                 }
                 WeiboDataSource.WeiboContentType.IMAGE -> {
+                    itemView.item_weibo_intl_text.text = bean.text
+
                     itemView.item_weibo_intl_content.visibility = View.VISIBLE
                     itemView.item_weibo_intl_pic_grid.visibility = View.VISIBLE
                     itemView.item_weibo_intl_retweeted.visibility = View.GONE
@@ -102,6 +121,8 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
                     }
                 }
                 WeiboDataSource.WeiboContentType.WEIBO -> {
+                    itemView.item_weibo_intl_text.text = bean.text
+
                     itemView.item_weibo_intl_content.visibility = View.VISIBLE
                     itemView.item_weibo_intl_pic_grid.visibility = View.GONE
                     itemView.item_weibo_intl_retweeted.visibility = View.VISIBLE
@@ -120,6 +141,12 @@ class WeiboIntlMainAdapter(private val weiboList: ArrayList<WeiboStatus.Statuse>
         fun bindEvent(cardClick: ((View, Int) -> Unit), position: Int){
             itemView.item_weibo_intl_card.setOnClickListener {
                 cardClick(it, position)
+            }
+        }
+
+        fun bindAvatarEvent(avatarClick: ((View, Int) -> Unit), position: Int){
+            itemView.item_weibo_intl_avatar.setOnClickListener {
+                avatarClick(it, position)
             }
         }
     }

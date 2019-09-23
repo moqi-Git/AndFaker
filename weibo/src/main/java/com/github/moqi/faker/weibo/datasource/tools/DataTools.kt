@@ -17,6 +17,7 @@ fun WeiboStatus.Statuse.getWeiboType(): WeiboDataSource.WeiboContentType{
     return when{
         retweeted_status != null -> WeiboDataSource.WeiboContentType.WEIBO
         pic_urls?.size?:0 != 0 -> WeiboDataSource.WeiboContentType.IMAGE
+        text.contains("http://") -> WeiboDataSource.WeiboContentType.LINK
 
         else -> WeiboDataSource.WeiboContentType.TEXT
     }

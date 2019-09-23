@@ -71,7 +71,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         tools:text="微博 文本内容//@来去之间：什么鬼"
-        android:textColor="#333"/>
+        android:textColor="#333"
+        android:autoLink="web"/>
 
     <TextView
         android:id="@+id/item_weibo_intl_translate"
@@ -122,6 +123,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="\@扶她柠檬茶:今天保证没有糖"
+                android:autoLink="web"
                 android:textColor="#333"/>
 
             <TextView
@@ -168,17 +170,26 @@
         app:layout_constraintTop_toBottomOf="@id/item_weibo_intl_content">
 
         <LinearLayout
+            android:id="@+id/item_weibo_intl_bottom_tab_reposts"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:background="@drawable/ic_share" />
+            <TextView
+                android:id="@+id/item_weibo_intl_bottom_tab_tv_reposts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/gray_3"
+                tools:text="120"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/item_weibo_intl_bottom_tab_comments"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -187,9 +198,17 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/ic_comment" />
+            <TextView
+                android:id="@+id/item_weibo_intl_bottom_tab_tv_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/gray_3"
+                tools:text="120"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/item_weibo_intl_bottom_tab_likes"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -198,6 +217,13 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/ic_like" />
+            <TextView
+                android:id="@+id/item_weibo_intl_bottom_tab_tv_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/gray_3"
+                tools:text="120"/>
         </LinearLayout>
 
         <LinearLayout

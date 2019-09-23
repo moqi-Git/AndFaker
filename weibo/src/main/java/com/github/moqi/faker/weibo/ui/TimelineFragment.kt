@@ -37,6 +37,9 @@ class TimelineFragment: BaseFragment() {
         mWeiboAdapter.cardClickEvent = { v, p->
             openDetail(mWeiboList[p], v.findViewById(R.id.item_weibo_intl_avatar))
         }
+        mWeiboAdapter.avatarClickEvent = {v, p->
+            openUserPage(mWeiboList[p].user.id.toLong())
+        }
 
         weibo_rv_main.layoutManager = LinearLayoutManager(context)
         weibo_rv_main.addItemDecoration(DividerDecoration(0, 10, 0, 0))
@@ -120,5 +123,13 @@ class TimelineFragment: BaseFragment() {
         } else {
             startActivity(i)
         }
+    }
+
+    private fun openUserPage(uid: Long){
+        val i = Intent(context, WeiboUserActivity::class.java).apply {
+            putExtra("uid", uid)
+        }
+
+        startActivity(i)
     }
 }
